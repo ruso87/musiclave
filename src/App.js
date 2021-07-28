@@ -9,7 +9,7 @@ function App() {
         <NavBar/>
       </header>
       <section>
-        <ItemsList/>
+        <ItemsList greeting="Este será mi carrito."/>
       </section>
     </>
   );

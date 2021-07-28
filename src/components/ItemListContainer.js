@@ -1,7 +1,7 @@
-export default function ItemsList() {
+export default function ItemsList(props) {
     return (
         <div className="container">
-            <p>Aquí irá mi carrito</p>
+            <p>{ props.greeting }</p>
         </div>
     )
 }

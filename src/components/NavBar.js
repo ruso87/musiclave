@@ -1,20 +1,19 @@
+import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logoDsk from '../media/logo-musiclave-70.png';
-import logoMbl from '../media/logo-musiclave-40.png';
+import Logo from './Logo';
 import CartIco from './CartWIdget';
 import '../css/NavBar.css';
+import logoNavDsk from '../media/logo-musiclave-70.png';
+import logoNavMbl from '../media/logo-musiclave-40.png';
 
 function NavBar() {
     return (
         <Navbar bg="light" expand="lg">
-            <div className="container">
+            <Container>
                 <Navbar.Brand href="#home">
-                    <picture>
-                        <source media="(min-width:650px)" srcset={logoDsk} />
-                        <img alt="Musicalve - Tu musica está por nacer" src={logoMbl} className="logo"/>
-                    </picture>
+                    <Logo logoDsk={ logoNavDsk } logoMbl={ logoNavMbl } />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -31,7 +30,7 @@ function NavBar() {
                     </Nav>
                 </Navbar.Collapse>
                 <CartIco />
-            </div>
+            </Container>
         </Navbar>
     )
 }
