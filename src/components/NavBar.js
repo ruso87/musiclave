@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from './Logo';
-import CartIco from './CartWIdget';
+import CartIco from './CartWidget';
 import '../css/NavBar.css';
 import logoNavDsk from '../media/logo-musiclave-70.png';
 import logoNavMbl from '../media/logo-musiclave-40.png';
