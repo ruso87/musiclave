@@ -1,10 +1,10 @@
-import ItemCount from './ItemCount';
+import Container from 'react-bootstrap/Container';
+import ItemList from './ItemList';
 
-export default function ItemsList(props) {
+export default function ItemListContainer(props) {
     return (
-        <div className="container">
-            <p>{ props.greeting }</p>
-            <ItemCount stock="5" initial="0" />
-        </div>
+        <Container>
+            <ItemList />
+        </Container>
     )
 }
