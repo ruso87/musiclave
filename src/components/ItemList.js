@@ -1,54 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Item from './Item';
 import Row from 'react-bootstrap/Row';
+import { productos } from './Productos';
 
 export default function ItemList(){
 
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
       new Promise((resolve, reject) => {
-        ///
-        const productos = [
-          {
-            id: "1",
-            name: "Guitarra Gibson",
-            description: "Guitarra Gibson SG",
-            stock: 10,
-            initial: 0
-          },
-          {
-            id: "2",
-            name: "Guitarra Fender",
-            description: "Guitarra Electrica Fender Strotocaster",
-            stock: 7,
-            initial: 0
-          },
-          {
-            id: "3",
-            name: "Bajo Ivanez",
-            description: "Bajo eléctrico Ivanez Gibson SG",
-            stock: 5,
-            initial: 0
-          },
-          {
-            id: "4",
-            name: "Amplificador Orange",
-            description: "Amplificador marca Orange",
-            stock: 20,
-            initial: 0
-          }
-        ];
+        setLoading(true);
         setTimeout(() => resolve(productos), 2000);
       })
         .then((productosResolve) => {
           setProducts(productosResolve);
+          setLoading(false);
         })
         .catch((error) => {
           console.log("error:", error);
         });
     }, []);
-
+    
+    if (loading) {
+      return <h1>Loading...</h1>;
+    }
+  
     return (
       <Row>
         {products.map((cadaProducto) => (

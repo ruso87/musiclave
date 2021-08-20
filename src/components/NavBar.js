@@ -7,6 +7,7 @@ import CartIco from './CartWidget';
 import '../css/NavBar.css';
 import logoNavDsk from '../media/logo-musiclave-70.png';
 import logoNavMbl from '../media/logo-musiclave-40.png';
+import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
@@ -18,8 +19,8 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="navItems">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
+                        <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/"className="nav-link">Detalle</Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
