@@ -1,2 +1,3 @@
-#basic-navbar-nav { justify-content: flex-end;}
+header { margin-bottom: 30px;}
+#basic-navbar-nav { justify-content: flex-end; margin-right: 15px;}
 .cartIco { padding: 10px 10px 10px 9px; background: #C6C6C6; color: #004B9E; border-radius: 50%; display: flex; justify-content: center; align-items: center;}

@@ -5,28 +5,23 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from './Logo';
 import CartIco from './CartWidget';
 import '../css/NavBar.css';
-import logoNavDsk from '../media/logo-musiclave-70.png';
-import logoNavMbl from '../media/logo-musiclave-40.png';
 import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="navbar navbar-light bg-white border-bottom navbar-expand justify-content-between flex-column flex-lg-row">
             <Container>
-                <Navbar.Brand href="#home">
-                    <Logo logoDsk={ logoNavDsk } logoMbl={ logoNavMbl } />
-                </Navbar.Brand>
+            <Link to="/" className="navbar-brand">
+                    <Logo logoDsk='./media/logo-musiclave-70.png' logoMbl='./media/logo-musiclave-40.png' />
+            </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="navItems">
                         <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/"className="nav-link">Detalle</Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown title="Categorías" id="basic-nav-dropdown">
+                            <NavDropdown.Item><Link to="/category/guitarras">Guitarras</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/category/bajos">Bajos</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/category/amplificadores">Amplificadores</Link></NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

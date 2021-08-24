@@ -1,30 +1,33 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
+import '../css/Loading.css';
 import Container from 'react-bootstrap/Container';
 import ItemDetail from './ItemDetail';
 import { productos } from './Productos';
 
 export default function ItemDetailContainer() {
 
-    const  [item, setItem] = useState([]);
+    const [item, setItem] = useState([]);
+    const [loading, setLoading] = useState(false);
     const { id } = useParams();
 
-    const getItem = () => {
-        new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                const prod = productos.filter((asd)=>asd.id === id)
-                resolve(prod)
-            }, 2000)
-        })
-        .then (dataResolve => {
-            setItem(dataResolve);
-        })
-        .catch (err => console.log(err)); 
-    } 
-
     useEffect(() => {
-        getItem();
-    }, []);
+        new Promise((resolve, reject) => {
+          setLoading(true);
+          setTimeout(() => {resolve(productos.filter((prod)=>prod.id === id))}, 2000);
+        })
+        .then((dataResolve) => {
+        setItem(dataResolve);
+        setLoading(false);
+        })
+        .catch((error) => {
+        console.log("error:", error);
+        });
+    }, [id]);
+      
+    if (loading) {
+        return <div className="lds-ripple"><div></div><div></div></div>;
+    }
 
     return (
         <Container>

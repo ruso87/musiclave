@@ -13,14 +13,19 @@ function App() {
       </header>
     <Switch>
       <Route exact path="/">
-      <section>
-        <ItemListContainer />
-      </section>
+        <section>
+          <ItemListContainer />
+        </section>
       </Route>
-      <Route exact path="/detalle/:id">
-      <section>
-        <ItemDetailContainer />
-      </section>
+      <Route exact path="/category/:category">
+        <section>
+          <ItemListContainer />
+        </section>
+      </Route>
+      <Route exact path="/item/:id">
+        <section>
+          <ItemDetailContainer />
+        </section>
       </Route>
     </Switch>
   </BrowserRouter>

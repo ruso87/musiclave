@@ -5,6 +5,7 @@ export const productos =
             name: "Guitarra Gibson",
             img: "https://thumbs.static-thomann.de/thumb/orig/pics/prod/468454.webp",
             description: "Guitarra Gibson SG",
+            category: "guitarras",
             stock: 10,
             initial: 0,
             price: 449
@@ -14,6 +15,7 @@ export const productos =
             name: "Guitarra Fender",
             img: "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/439053/13206276_800.webp",
             description: "Guitarra Fender Stratocaster",
+            category: "guitarras",
             stock: 7,
             initial: 0,
             price: 36
@@ -23,6 +25,7 @@ export const productos =
             name: "Bajo Ibanez",
             img: "https://thumbs.static-thomann.de/thumb/orig/pics/prod/332277.webp",
             description: "Bajo eléctrico Ibanez",
+            category: "bajos",
             stock: 5,
             initial: 0,
             price: 218
@@ -32,6 +35,7 @@ export const productos =
             name: "Amplificador Orange",
             img: "https://thumbs.static-thomann.de/thumb/orig/pics/bdb/180726/7593986_800.webp",
             description: "Amplificador marca Orange",
+            category: "amplificadores",
             stock: 20,
             initial: 0,
             price: 449
