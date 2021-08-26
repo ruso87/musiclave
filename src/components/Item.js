@@ -1,4 +1,3 @@
-import ItemCount from "./ItemCount"
 import Card from "react-bootstrap/Card"
 import { Link } from "react-router-dom";
 
@@ -11,7 +10,6 @@ export default function Item(props) {
                 <Card.Body>
                     <Card.Title>{ props.name }</Card.Title>
                     <Card.Text>{ props.description }</Card.Text>
-                    <ItemCount stock={ props.stock } initial={ props.initial}/>
                     <Link to={`/item/${ props.id }`}>ir al detalle</Link>
                 </Card.Body>
             </Card>
