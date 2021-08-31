@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import '../css/ItemCount.css';
 
-export default function ItemCount({ stock, initial, click }) {
+export default function ItemCount({ stock, initial, onAdd }) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -24,7 +24,7 @@ export default function ItemCount({ stock, initial, click }) {
                 <p style={{ margin: '0' }}>{count}</p>
                 <Button variant="secondary" size="lg" text="+" onClick={sumar}>+</Button>
             </div>
-            {count > 0 && <Button className="addButton" variant="primary" size="lg" onClick={()=>click(count)}>Agregar al carrito</Button>}
+            {count > 0 && <Button className="addButton" variant="primary" size="lg" onClick={()=>onAdd(count)}>Agregar al carrito</Button>}
         </>
     );
 }

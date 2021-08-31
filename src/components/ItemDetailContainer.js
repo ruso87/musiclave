@@ -33,7 +33,7 @@ export default function ItemDetailContainer() {
         <Container>
             { item.map((item) => {
                 return (
-                    <ItemDetail id={item.id} name={item.name} img={item.img} price={item.price} description={item.description} stock={item.stock} initial={item.initial}/>
+                    <ItemDetail id={item.id} name={item.name} img={item.img} price={item.price} description={item.description} stock={item.stock} initial={item.initial} key={item.id}/>
                     )
                 })
             }
