@@ -11,7 +11,7 @@ export default function Cart() {
             <h1>Mi carrito</h1>
             { myCart.map((item) => {
                 return (
-                    <p>Producto: {item.name}. Cantidad: {item.quantity}</p>
+                    <p key={item.id}>Producto: {item.name}. Cantidad: {item.quantity}</p>
                     )
                 })
             }

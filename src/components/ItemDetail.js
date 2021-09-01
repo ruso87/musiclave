@@ -14,11 +14,29 @@ export default function ItemDetail(props){
     const { myCart, setMyCart } = useContext(CartContext);
     const [ finalizar, setFinalizar ] = useState(false);
 
+    console.log(myCart);
+
+    const addItem = (cantidad) => {
+        myCart.push({ id: props.id, name: props.name, quantity: cantidad });
+        setMyCart(myCart)
+    }
+
+    const isInCart = (cantidad) => {
+        const index = myCart.findIndex( (obj) => obj.id === props.id );
+        
+        if (index >= 0) {
+            console.log(`el producto está en la posición ${index} del Carrito`);
+            myCart[index].quantity = myCart[index].quantity + cantidad;
+        } else {
+            console.log(`Todavía no se compro`);
+            addItem(cantidad)
+        }
+
+    };
+    
     const agregar = (cantidad) => {
         setFinalizar(!finalizar)
-
-        myCart.push({ name: props.name, quantity: cantidad });
-        setMyCart(myCart)
+        isInCart(cantidad);
     }
 
     return (
