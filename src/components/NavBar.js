@@ -7,7 +7,7 @@ import CartIco from './CartWidget';
 import '../css/NavBar.css';
 import { Link } from "react-router-dom";
 
-function NavBar() {
+export default function NavBar() {
     return (
         <Navbar className="navbar navbar-light bg-white border-bottom navbar-expand justify-content-between flex-column flex-lg-row">
             <Container>
@@ -30,5 +30,3 @@ function NavBar() {
         </Navbar>
     )
 }
-
-export default NavBar;

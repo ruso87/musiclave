@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CartContext } from "../context/cartContext";
 import { Link } from "react-router-dom";
 import '../css/ItemDetail.css';
 import Container from 'react-bootstrap/Container';
@@ -7,31 +7,35 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ItemCount from "./ItemCount";
-import { CartContext } from "../context/cartContext";
 
 export default function ItemDetail(props){
 
-    const { myCart, setMyCart } = useContext(CartContext);
+    const { myCart, addItem } = useContext(CartContext);
     const [ finalizar, setFinalizar ] = useState(false);
+    const [ newStock, setNewStock ] = useState(props.stock);
+    const [ position, setPosition ] = useState(parseInt("-1"));
 
     console.log(myCart);
-
-    const addItem = (cantidad) => {
-        myCart.push({ id: props.id, name: props.name, quantity: cantidad });
-        setMyCart(myCart)
-    }
-
-    const isInCart = (cantidad) => {
-        const index = myCart.findIndex( (obj) => obj.id === props.id );
-        
-        if (index >= 0) {
-            console.log(`el producto está en la posición ${index} del Carrito`);
-            myCart[index].quantity = myCart[index].quantity + cantidad;
+    
+    useEffect(() => {
+        const checkCart = myCart.findIndex( (obj) => obj.id === props.id );
+        if (checkCart >= 0) {
+            const actualStock = props.stock - myCart[checkCart].quantity
+            setNewStock(actualStock);
+            setPosition(checkCart);
         } else {
             console.log(`Todavía no se compro`);
-            addItem(cantidad)
         }
+    }, [myCart, props.id, props.stock]);
 
+    const isInCart = (cantidad) => {
+        if (position >= 0) {
+            console.log(`el producto está en la posición ${position} del Carrito`);
+            myCart[position].quantity = myCart[position].quantity + cantidad;
+        } else {
+            console.log(`Todavía no se compro 2`);
+            addItem(props, cantidad)
+        }
     };
     
     const agregar = (cantidad) => {
@@ -51,10 +55,17 @@ export default function ItemDetail(props){
                 <Col>
                     <p className="description">Descripción: { props.description }</p>
                     <h2 className="price">Precio: $ { props.price }</h2>
-                    {finalizar ? (
-                        <Link to="/Cart"><Button className="endButton" variant="primary" size="lg">Finalizar compra</Button></Link>
+                    { newStock === 0 ? (
+                        <>
+                        <Button className="endButton" variant="primary" size="lg" disabled={true}>Sin stock</Button>
+                        <Link to="/"><p className="price">Seguir comprando!</p></Link>
+                        </>
                     ) : (
-                        <ItemCount initial={props.initial} stock={props.stock} onAdd={ (cant) => agregar(cant)} />
+                        finalizar ? (
+                            <Link to="/Cart"><Button className="endButton" variant="primary" size="lg">Finalizar compra</Button></Link>
+                        ) : (
+                            <ItemCount initial={props.initial} stock={newStock} onAdd={ (cant) => agregar(cant)} />
+                        )
                     )}
                 </Col>
             </Row>

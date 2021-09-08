@@ -1,19 +1,16 @@
 import './App.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useState } from 'react';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import { CartContext } from "./context/cartContext";
 import Cart from './components/Cart';
+import { CartProvider } from './context/cartContext';
 
 
 function App() {
 
-  const [myCart, setMyCart] = useState([]);
-
   return (
-    <CartContext.Provider value={{ myCart, setMyCart }}>
+    <CartProvider>
       <BrowserRouter>
         <header>
           <NavBar/>
@@ -41,7 +38,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </CartContext.Provider>
+    </CartProvider>
   );
 }
 
