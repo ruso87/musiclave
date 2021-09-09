@@ -8,7 +8,7 @@ export const productos =
             category: "guitarras",
             stock: 10,
             initial: 0,
-            price: 449
+            price: 10
             },
             {
             id: "2",
@@ -18,7 +18,7 @@ export const productos =
             category: "guitarras",
             stock: 7,
             initial: 0,
-            price: 36
+            price: 11
             },
             {
             id: "3",
@@ -28,7 +28,7 @@ export const productos =
             category: "bajos",
             stock: 5,
             initial: 0,
-            price: 218
+            price: 12
             },
             {
             id: "4",
@@ -38,6 +38,6 @@ export const productos =
             category: "amplificadores",
             stock: 20,
             initial: 0,
-            price: 449
+            price: 13
             }
         ];

@@ -13,7 +13,7 @@ export default function Cart() {
     
     return (
         itemsInCart <= 0 ?
-        <Container>
+        (<Container>
             <Row>
                 <h1>Carrito</h1>
             </Row>
@@ -25,7 +25,7 @@ export default function Cart() {
                     </Link></Col>
             </Row>
         </Container>
-        :
+        ) : (
         <Container>
             <Row>
                 <h1>Carrito</h1>
@@ -55,6 +55,6 @@ export default function Cart() {
                 <h3>Total: {totalPrice}</h3>
                 <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton">Vaciar <i className="fas fa-trash"></i></Button>
             </Row>
-        </Container>
+        </Container>)
     )
 }
