@@ -1,6 +1,6 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,7 +14,7 @@ const firebaseConfig = {
   appId: "1:851969229083:web:46adecefb97638370a53be"
 };
 
-// Initialize Firebase
+// Initialize Firebase y lo pongo en app
 const app = initializeApp(firebaseConfig);
 
 // getData devuelve la conexion con firestore a mi app

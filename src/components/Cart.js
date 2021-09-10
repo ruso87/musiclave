@@ -52,7 +52,7 @@ export default function Cart() {
                 })
             }
             <Row className="endControls">
-                <h3>Total: {totalPrice}</h3>
+                <h3>Total: $ {totalPrice}</h3>
                 <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton">Vaciar <i className="fas fa-trash"></i></Button>
             </Row>
         </Container>)

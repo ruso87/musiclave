@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import '../css/Loading.css';
 import ItemList from './ItemList';
-import { productos } from './Productos';
+// import { productos } from './Productos';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { getData } from '../firebase';
 
 export default function ItemListContainer(){
 
@@ -10,24 +12,65 @@ export default function ItemListContainer(){
     const [loading, setLoading] = useState(false);
     const { category } = useParams();
 
-    useEffect(() => {
-        new Promise((resolve, reject) => {
-          setLoading(true);
-          if (category !== undefined){
-            setTimeout(() => resolve(productos.filter((prod)=>prod.category === category)), 2000);
-          }else{
-            setTimeout(() => resolve(productos), 2000);
-        }
-        })
-        .then((productosResolve) => {
-          setProducts(productosResolve);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log("error:", error);
-        });
-    }, [category]);
     
+    useEffect(() => {
+      setLoading(true);
+
+      // función que busca todos los productos
+      const getProds = async () => {
+        const prodCollection = collection(getData(), 'productos');
+        const prodSnapshot = await getDocs(prodCollection);
+        const prodList = prodSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setLoading(false);
+        setProducts(prodList);
+      };
+
+      // función que busca productos filtrados
+      const getCategory = async () => {
+        const prodCollection = collection(getData(), 'productos');
+        const categoryQuery = query(prodCollection, where('category', '==', `${category}`));
+        try {
+          const prodSnapshot = await getDocs(categoryQuery);
+          const categoryList = prodSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setLoading(false);
+          setProducts(categoryList);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      // elijo qué función utilizar
+      if (category !== undefined){
+        getCategory();
+      } else {
+        getProds();
+      }
+
+    }, [category]);
+  
+    // useEffect(() => {
+    //     new Promise((resolve, reject) => {
+    //       setLoading(true);
+    //       if (category !== undefined){
+    //         setTimeout(() => resolve(productos.filter((prod)=>prod.category === category)), 2000);
+    //       }else{
+    //         setTimeout(() => resolve(productos), 2000);
+    //     }
+    //     })
+    //     .then((productosResolve) => {
+    //       setProducts(productosResolve);
+    //       setLoading(false);
+    //     })
+    //     .catch((error) => {
+    //       console.log("error:", error);
+    //     });
+    // }, [category]);
     
     if (loading) {
       return <div className="lds-ripple"><div></div><div></div></div>;
