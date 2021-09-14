@@ -1,4 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+// import { doc, setDoc, Timestamp } from "firebase/firestore";
+import { collection, doc, setDoc, Timestamp } from "firebase/firestore";
+import { getData } from "../firebase";
 
 export const CartContext = createContext();
 
@@ -8,6 +11,24 @@ export const CartProvider = ({ children }) => {
     const [itemsInCart, setItemsInCart] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
   
+
+    const userInfo = {
+        name: "Andrés",
+        mail: "andres@mail.com",
+        phone: "4444-0000"
+    }
+
+    const finalizarCompra = async () => {
+        console.log("Fin de compra");
+        const orderCollection = doc(collection(getData(), 'orders'));
+        const order = {
+            buyer: userInfo,
+            items: myCart,
+            date: Timestamp.fromDate(new Date()),
+            total: totalPrice
+        };
+        await setDoc(orderCollection, order)
+    }
 
     const addItem = (item, cantidad) => {
         // inicializo newCart y lo utilizo en esta función para no mutar myCart
@@ -68,7 +89,7 @@ export const CartProvider = ({ children }) => {
     
 
     return (
-        <CartContext.Provider value={{ myCart, setMyCart, addItem, isInCart, itemsInCart, setItemsInCart, removeItem, vaciarCarrito, totalPrice, setTotalPrice }}>
+        <CartContext.Provider value={{ myCart, setMyCart, addItem, isInCart, itemsInCart, setItemsInCart, removeItem, vaciarCarrito, totalPrice, setTotalPrice, finalizarCompra }}>
             {children}
         </CartContext.Provider>
     );

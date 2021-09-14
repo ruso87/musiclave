@@ -1,6 +1,6 @@
 h1 { margin-bottom: 30px !important;}
 h2 { margin-bottom: 30px !important;}
-h3 { text-align: right; padding-top: 30px;}
+h3 { text-align: right; padding-top: 31px;}
 .th { padding: 15px 0; background-color: #dee2e6;}
 .td { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #dee2e6;}
 .td .action { display: flex; justify-content: space-between;}
@@ -8,4 +8,5 @@ h3 { text-align: right; padding-top: 30px;}
 .imgProducto { background-color: #fff; text-align: center; padding: 10px;}
 .imgProducto img { max-width: 100%; max-height: 60px;}
 .endControls { justify-content: flex-end;}
-.emptyButton { margin-top: 28px; margin-left: 20px; padding: 10px 30px !important;}
+.emptyButton { margin-top: 26px; margin-left: 20px; padding: 10px 30px !important; font-size: 15px !important;}
+.emptyButton i { margin-right: 5px;}

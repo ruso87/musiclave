@@ -9,7 +9,7 @@ import '../css/Cart.css';
 
 export default function Cart() {
 
-    const { myCart, removeItem, itemsInCart, vaciarCarrito, totalPrice } = useContext(CartContext);
+    const { myCart, removeItem, itemsInCart, vaciarCarrito, totalPrice, finalizarCompra } = useContext(CartContext);
     
     return (
         itemsInCart <= 0 ?
@@ -45,7 +45,7 @@ export default function Cart() {
                         <Col md={2} className="centered">$ {item.price}</Col>
                         <Col md={1} className="action">
                             <Link to={`/item/${ item.id }`}><Button variant="primary" size="sm" alt="Editar"><i className="fas fa-pencil"></i></Button></Link>
-                            <Button variant="danger" size="sm" alt="Eliminar" onClick={()=>removeItem(item.id)}><i className="fas fa-trash"></i></Button>
+                            <Button variant="danger" size="sm" alt="Eliminar" onClick={()=>removeItem(item.id)}><i className="far fa-trash"></i></Button>
                         </Col>
                     </Row>
                     )
@@ -53,7 +53,8 @@ export default function Cart() {
             }
             <Row className="endControls">
                 <h3>Total: $ {totalPrice}</h3>
-                <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton">Vaciar <i className="fas fa-trash"></i></Button>
+                <Button variant="primary" size="sm" alt="Vaciar carrito" onClick={()=>finalizarCompra()} className="emptyButton"><i className="far fa-check"></i> Finalizar Compra</Button>
+                <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton"><i className="far fa-trash"></i> Vaciar</Button>
             </Row>
         </Container>)
     )
