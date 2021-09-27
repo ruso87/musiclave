@@ -10,7 +10,7 @@ import ItemCount from "./ItemCount";
 
 export default function ItemDetail(props){
 
-    const { myCart, addItem} = useContext(CartContext);
+    const { myCart, addItem, formatPrice} = useContext(CartContext);
     const [ finalizar, setFinalizar ] = useState(false);
     const [ newInitial, setNewInitial ] = useState(props.initial);
     
@@ -34,15 +34,14 @@ export default function ItemDetail(props){
     return (
         <Container>
            <Row>
-               <Col>
-                    <h1 className="detailName">{ props.name }</h1>
+               <Col lg={6}>
                     <div className="detailImageContainer">
                         <img className="detailImage" src={ props.img } alt={ props.name } />
                     </div>
                 </Col>
-                <Col>
-                    <p className="description">Descripción: { props.description }</p>
-                    <h2 className="price">Precio: $ { props.price }</h2>
+                <Col lg={6}>
+                    <h1 className="detailName">{ props.name }</h1>
+                    <h2 className="price">Precio: $ { formatPrice(props.price) }</h2>
                     { props.stock === 0 ? (
                         <>
                         <Button className="endButton" variant="primary" size="lg" disabled={true}>Sin stock</Button>
@@ -55,6 +54,7 @@ export default function ItemDetail(props){
                             <ItemCount initial={newInitial} stock={props.stock} onAdd={ (cant) => agregar(cant)} />
                         )
                     )}
+                    <p className="description">Descripción: { props.description }</p>
                 </Col>
             </Row>
         </Container>

@@ -1,5 +1,7 @@
 header { margin-bottom: 30px;}
-#basic-navbar-nav { justify-content: flex-end; margin-right: 15px;}
-.cartIco { position: relative; display: flex; justify-content: center; align-items: center; font-size: 22px; color: #004B9E; padding: 5px;}
-.cartIco:hover { text-decoration: none; color: #007bff;}
-.cartIco span { position: absolute; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: 700; color: #fff; height: 20px; width: 20px; bottom: -5px; left: 20px; background: #09003a; border-radius: 50%;}
+header .navbar { background-color: rgb(255, 145, 0) !important}
+#responsive-navbar-nav { justify-content: flex-end; margin-right: 15px;}
+.cartIco { position: relative; display: flex; justify-content: center; align-items: center; font-size: 22px; color: #0b0045 !important; padding: 5px;}
+.cartIco:hover { text-decoration: none; color: #fff !important;}
+.cartIco span { position: absolute; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: 700; color: #fff; height: 20px; width: 20px; bottom: -5px; left: 20px; background: #107ef5; border-radius: 50%;}
+.navbar-light .navItems .nav-link { font-weight: 600; color: #fff !important}

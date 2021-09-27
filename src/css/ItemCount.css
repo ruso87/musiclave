@@ -1,2 +1,3 @@
-.counter{ display: flex; justify-content: space-between; align-items: center; ;background: #fff; font-size: 25px; margin-bottom: 15px;}
-.addButton { width: 100%; font-size: 17px !important; font-weight: 600 !important; margin-bottom: 5px;}
+.counter{ display: flex; justify-content: space-between; align-items: center; ;background: #fff; font-size: 25px; margin-bottom: 15px; max-width: 260px;}
+.addButton { width: 100%; font-size: 17px !important; font-weight: 600 !important; margin-bottom: 15px;}
+.endButton { margin-bottom: 15px;}

@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 // import { doc, setDoc, Timestamp } from "firebase/firestore";
-import { collection, doc, setDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getData } from "../firebase";
 
 export const CartContext = createContext();
@@ -10,26 +10,32 @@ export const CartProvider = ({ children }) => {
     const [myCart, setMyCart] = useState([]);
     const [itemsInCart, setItemsInCart] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
-  
-
-    const userInfo = {
-        name: "Andrés",
-        mail: "andres@mail.com",
-        phone: "4444-0000"
-    }
+    const [user, setUser] = useState({
+        nombre: '',
+        apellido: '',
+        email: '',
+        tel: ''
+    });
+    const [purchaseId, setPurchaseId] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const finalizarCompra = async () => {
-        console.log("Fin de compra");
-        const orderCollection = doc(collection(getData(), 'orders'));
-        const order = {
-            buyer: userInfo,
-            items: myCart,
-            date: Timestamp.fromDate(new Date()),
-            total: totalPrice
-        };
-        await setDoc(orderCollection, order)
+        setLoading(true);
+        try {
+            const docRef = await addDoc(collection(getData(), "orders"), {
+                buyer: user,
+                items: myCart,
+                date: Timestamp.fromDate(new Date()),
+                total: totalPrice
+            });
+            setPurchaseId(docRef.id);
+            vaciarCarrito();
+            setLoading(false);
+        } catch (e) {
+           console.error("Error adding document: ", e);
+        }
     }
-
+    
     const addItem = (item, cantidad) => {
         // inicializo newCart y lo utilizo en esta función para no mutar myCart
         let newCart = myCart
@@ -58,6 +64,11 @@ export const CartProvider = ({ children }) => {
             setMyCart(newCart)
         }
     }
+
+    const formatPrice = (num) => {
+        const formatNum = new Intl.NumberFormat('es-AR').format(num);
+        return formatNum;
+    };
 
     const isInCart = (id) => {
         const search = myCart.filter((item) => item.id === id);
@@ -89,7 +100,7 @@ export const CartProvider = ({ children }) => {
     
 
     return (
-        <CartContext.Provider value={{ myCart, setMyCart, addItem, isInCart, itemsInCart, setItemsInCart, removeItem, vaciarCarrito, totalPrice, setTotalPrice, finalizarCompra }}>
+        <CartContext.Provider value={{ myCart, setMyCart, addItem, isInCart, itemsInCart, setItemsInCart, removeItem, vaciarCarrito, totalPrice, setTotalPrice, finalizarCompra, formatPrice, user, setUser, purchaseId, loading }}>
             {children}
         </CartContext.Provider>
     );

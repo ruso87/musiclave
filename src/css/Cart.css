@@ -1,5 +1,5 @@
-h1 { margin-bottom: 30px !important;}
-h2 { margin-bottom: 30px !important;}
+h1 { font-weight: 100 !important; margin-bottom: 30px !important;}
+h2 { margin-bottom: 10px !important; font-size: 1.45em;}
 h3 { text-align: right; padding-top: 31px;}
 .th { padding: 15px 0; background-color: #dee2e6;}
 .td { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #dee2e6;}

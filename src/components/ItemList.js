@@ -5,7 +5,7 @@ import Item from './Item';
 export default function ItemList({ products }){
 
     return (
-      <Container>
+      <Container className="productList">
         <Row>
           {products.map((cadaProducto) => (
             <Item {...cadaProducto} key={ cadaProducto.id }/>

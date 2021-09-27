@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import '../css/Loading.css';
+import '../css/ItemListContainer.css'
 import ItemList from './ItemList';
-// import { productos } from './Productos';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { getData } from '../firebase';
 
@@ -53,24 +53,7 @@ export default function ItemListContainer(){
       }
 
     }, [category]);
-  
-    // useEffect(() => {
-    //     new Promise((resolve, reject) => {
-    //       setLoading(true);
-    //       if (category !== undefined){
-    //         setTimeout(() => resolve(productos.filter((prod)=>prod.category === category)), 2000);
-    //       }else{
-    //         setTimeout(() => resolve(productos), 2000);
-    //     }
-    //     })
-    //     .then((productosResolve) => {
-    //       setProducts(productosResolve);
-    //       setLoading(false);
-    //     })
-    //     .catch((error) => {
-    //       console.log("error:", error);
-    //     });
-    // }, [category]);
+
     
     if (loading) {
       return <div className="lds-ripple"><div></div><div></div></div>;
