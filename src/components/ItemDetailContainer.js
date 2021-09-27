@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import '../css/Loading.css';
 import Container from 'react-bootstrap/Container';
 import ItemDetail from './ItemDetail';
-// import { productos } from './Productos';
 import { collection, getDocs } from 'firebase/firestore';
 import { getData } from '../firebase';
 
