@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-// import { doc, setDoc, Timestamp } from "firebase/firestore";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getData } from "../firebase";
 
