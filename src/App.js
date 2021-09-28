@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import CheckoutOk from './components/CheckoutOk';
 import NoMatch from './components/NoMatch';
+import Footer from './components/Footer';
 import { CartProvider } from './context/cartContext';
 
 
@@ -20,41 +21,44 @@ function App() {
         </header>
         <Switch>
           <Route exact path="/">
-            <section>
+            <section className="mainContent">
               <ItemListContainer />
             </section>
           </Route>
           <Route exact path="/category/:category">
-            <section>
+            <section className="mainContent">
               <ItemListContainer />
             </section>
           </Route>
           <Route exact path="/item/:id">
-            <section>
+            <section className="mainContent">
               <ItemDetailContainer />
             </section>
           </Route>
           <Route exact path="/cart">
-            <section>
+            <section className="mainContent">
               <Cart />
             </section>
           </Route>
           <Route exact path="/checkout">
-            <section>
+            <section className="mainContent">
               <Checkout />
             </section>
           </Route>
           <Route exact path="/checkout-ok">
-            <section>
+            <section className="mainContent">
               <CheckoutOk />
             </section>
           </Route>
           <Route path="*">
-            <section>
+            <section className="mainContent">
               <NoMatch />
             </section>
           </Route>
         </Switch>
+        <footer>
+          <Footer/>
+        </footer>
       </Router>
     </CartProvider>
   );

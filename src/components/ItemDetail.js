@@ -33,13 +33,13 @@ export default function ItemDetail(props){
 
     return (
         <Container>
-           <Row>
+            <Row className="mainDetail">
                <Col lg={6}>
                     <div className="detailImageContainer">
                         <img className="detailImage" src={ props.img } alt={ props.name } />
                     </div>
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} className="colDetail">
                     <h1 className="detailName">{ props.name }</h1>
                     <h2 className="price">Precio: $ { formatPrice(props.price) }</h2>
                     { props.stock === 0 ? (
@@ -54,7 +54,12 @@ export default function ItemDetail(props){
                             <ItemCount initial={newInitial} stock={props.stock} onAdd={ (cant) => agregar(cant)} />
                         )
                     )}
-                    <p className="description">Descripción: { props.description }</p>
+                </Col>
+            </Row>
+            <Row className="description">
+               <Col>
+                    <h4>Descripción:</h4>
+                    <p>{ props.description }</p>
                 </Col>
             </Row>
         </Container>

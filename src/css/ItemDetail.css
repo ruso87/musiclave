@@ -1,9 +1,13 @@
 .detailName { margin-bottom: 30px;}
 .detailImageContainer { background-color: #fff; text-align: center; padding: 20px;}
 .detailImage { max-width: 80%; max-height: 400px;}
-
+.colDetail { border-radius: 5px; padding: 30px; background: #f8f9fa; background: linear-gradient(180deg, rgba(255,255,255,1) 69%, rgba(248,249,250,1) 100%);}
 
 .endButton { width: 100%; font-size: 17px !important; font-weight: 600 !important;}
+
+.mainDetail { margin-bottom: 30px;}
+.description h4 { font-size: 2rem; font-weight: 100; margin-bottom: 20px;}
+.description p { font-size: 1.2rem;}
 
 @media (max-width: 991px) {
     .detailName { margin-top: 30px;}
