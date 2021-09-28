@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import '../css/Loading.css';
 import '../css/ItemListContainer.css'
 import ItemList from './ItemList';
+import NoMatch from './NoMatch';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { getData } from '../firebase';
 
@@ -10,6 +11,7 @@ export default function ItemListContainer(){
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [notFound, setNotFound] = useState(false);
     const { category } = useParams();
 
     
@@ -40,6 +42,9 @@ export default function ItemListContainer(){
           }));
           setLoading(false);
           setProducts(categoryList);
+          if (categoryList.length === 0) {
+            setNotFound(true);
+          }
         } catch (err) {
           console.log(err);
         }
@@ -58,7 +63,10 @@ export default function ItemListContainer(){
     if (loading) {
       return <div className="lds-ripple"><div></div><div></div></div>;
     }
-  
+    if (notFound) {
+      return <NoMatch />;
+    }
+
     return <ItemList products={ products }/>;
 
 }

@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import CheckoutOk from './components/CheckoutOk';
+import NoMatch from './components/NoMatch';
 import { CartProvider } from './context/cartContext';
 
 
@@ -46,6 +47,11 @@ function App() {
           <Route exact path="/checkout-ok">
             <section>
               <CheckoutOk />
+            </section>
+          </Route>
+          <Route path="*">
+            <section>
+              <NoMatch />
             </section>
           </Route>
         </Switch>
