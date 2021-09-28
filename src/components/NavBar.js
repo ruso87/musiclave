@@ -12,7 +12,7 @@ export default function NavBar() {
         <Navbar collapseOnSelect expand="lg">
             <Container>
             <Link to="/" className="navbar-brand">
-                    <Logo logoDsk='/media/logo-musiclave-70.png' logoMbl='/media/logo-musiclave-40.png' />
+                    <Logo logoDsk='./media/logo-musiclave-70.png' logoMbl='./media/logo-musiclave-40.png' />
             </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
