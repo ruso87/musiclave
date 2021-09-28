@@ -1,5 +1,4 @@
 {
-  "homepage":"https://ruso87.github.io/musiclave/",
   "name": "proyecto",
   "version": "0.1.0",
   "private": true,
@@ -40,7 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "gh-pages": "^3.2.3"
-  }
+  "homepage": "https://ruso87.github.io/musiclave/"
 }

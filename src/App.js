@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <CartProvider>
-      <BrowserRouter>
+      <Router basename="/">
         <header>
           <NavBar/>
         </header>
@@ -49,7 +49,7 @@ function App() {
             </section>
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </CartProvider>
   );
 }
