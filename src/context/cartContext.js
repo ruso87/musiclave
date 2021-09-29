@@ -33,6 +33,8 @@ export const CartProvider = ({ children }) => {
         } catch (e) {
            console.error("Error adding document: ", e);
         }
+        // vacio el localStorage 
+        localStorage.clear();
     }
     
     const addItem = (item, cantidad) => {
@@ -57,11 +59,16 @@ export const CartProvider = ({ children }) => {
 
             // actualizo MyCart
             setMyCart(newCart)
+            // almaceno los datos en localStorage 
+            setStorage(newCart);
         } else {
             // si el Producto no está en el carrito, actualizo MyCart directamente
             newCart = [...newCart, newItem];
             setMyCart(newCart)
+            // almaceno los datos en localStorage 
+            setStorage(newCart);
         }
+
     }
 
     const formatPrice = (num) => {
@@ -76,12 +83,27 @@ export const CartProvider = ({ children }) => {
 
     const removeItem = (producto) =>{
         const myNewCart = myCart.filter(( e ) => e.id !== producto);
-        setMyCart(myNewCart)
+        setMyCart(myNewCart);
+        setStorage(myNewCart);
     }
 
     const vaciarCarrito = () => {
         setMyCart([])
+        setStorage([]);        
     };
+
+    const getStorage = () => {
+        if(localStorage.getItem('musiclaveCart') != null) {
+            // si hay algo guardado, traigo el objeto del Usuario 
+            var storedCart = localStorage.getItem('musiclaveCart')
+            storedCart = JSON.parse(storedCart);
+            setMyCart(storedCart);
+        }        
+    };
+    const setStorage = (cart) => {
+        localStorage.setItem('musiclaveCart', JSON.stringify(cart));        
+    };
+
 
     useEffect (() => {
         let inCart = 0;
@@ -96,7 +118,10 @@ export const CartProvider = ({ children }) => {
         }
         setTotalPrice(cartPrice)
     }, [myCart]);
-    
+
+    useEffect (() => {
+        getStorage();
+    }, []);
 
     return (
         <CartContext.Provider value={{ myCart, setMyCart, addItem, isInCart, itemsInCart, setItemsInCart, removeItem, vaciarCarrito, totalPrice, setTotalPrice, finalizarCompra, formatPrice, user, setUser, purchaseId, loading }}>
