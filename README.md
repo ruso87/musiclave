@@ -32,7 +32,7 @@ El proyecto se puede ver funcionando en : [https://ruso87.github.io/musiclave/](
 
 ## Ejemplo de navegación
 
-![GIF](/musiclave.gif "Navegacion")
+![GIF](/ruso87/musiclave/blob/master/public/musiclave.gif?raw=true "Navegacion")
 
 
 ## Autor
