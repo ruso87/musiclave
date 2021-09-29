@@ -36,7 +36,7 @@ export default function ItemDetail(props){
                         </>
                     ) : (
                         finalizar ? (
-                            <Link to="/Cart"><Button className="endButton" variant="primary" size="lg">Finalizar compra</Button></Link>
+                            <Link to="/Cart"><Button className="endButton" variant="primary" size="lg">Ver carrito</Button></Link>
                         ) : (
                             <ItemCount initial={props.initial} stock={props.stock} onAdd={ (cant) => agregar(cant)} />
                         )

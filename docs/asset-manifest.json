@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/musiclave/static/css/main.77d487db.chunk.css",
-    "main.js": "/musiclave/static/js/main.76273409.chunk.js",
-    "main.js.map": "/musiclave/static/js/main.76273409.chunk.js.map",
+    "main.js": "/musiclave/static/js/main.89d9006f.chunk.js",
+    "main.js.map": "/musiclave/static/js/main.89d9006f.chunk.js.map",
     "runtime-main.js": "/musiclave/static/js/runtime-main.7ba883c9.js",
     "runtime-main.js.map": "/musiclave/static/js/runtime-main.7ba883c9.js.map",
     "static/css/2.081f420c.chunk.css": "/musiclave/static/css/2.081f420c.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.081f420c.chunk.css",
     "static/js/2.5494134d.chunk.js",
     "static/css/main.77d487db.chunk.css",
-    "static/js/main.76273409.chunk.js"
+    "static/js/main.89d9006f.chunk.js"
   ]
 }
