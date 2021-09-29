@@ -15,7 +15,7 @@ export default function Cart() {
         itemsInCart <= 0 ?
         (<Container>
             <Row>
-                <h1>Carrito</h1>
+                <Col><h1>Carrito</h1></Col>
             </Row>
             <Row>
                 <Col md={12} className="centered"><h2>Oh oh! Parece que no hay nada por aquí...</h2></Col>
@@ -28,10 +28,10 @@ export default function Cart() {
         ) : (
         <Container>
             <Row>
-                <h1>Carrito</h1>
+                <Col><h1>Carrito</h1></Col>
             </Row>
             <Row className="th">
-                <Col md={8}>Productos</Col>
+                <Col lg={8} md={7}>Productos</Col>
                 <Col md={1} className="centered">Cantidad</Col>
                 <Col md={2} className="centered">Precio</Col>
                 <Col md={1} className="centered">Acciones</Col>
@@ -40,11 +40,13 @@ export default function Cart() {
                 return (
                     <Row className="td" key={item.id}>
                         <Col md={1} className="imgProducto"><img src={item.img} alt={item.name}/></Col>
-                        <Col md={7} className="nombreProducto">{item.name}</Col>
+                        <Col lg={7} md={6} className="nombreProducto">{item.name}</Col>
                         <Col md={1} className="centered">{item.quantity}</Col>
                         <Col md={2} className="centered">$ {formatPrice(item.price)}</Col>
                         <Col md={1} className="action">
-                            <Link to={`/item/${ item.id }`}><Button variant="primary" size="sm" alt="Editar"><i className="fas fa-pencil"></i></Button></Link>
+                            <Link to={`/item/${ item.id }`}>
+                                <Button variant="primary" size="sm" alt="Editar"><i className="fas fa-pencil"></i></Button>
+                            </Link>
                             <Button variant="danger" size="sm" alt="Eliminar" onClick={()=>removeItem(item.id)}><i className="far fa-trash"></i></Button>
                         </Col>
                     </Row>
@@ -52,11 +54,13 @@ export default function Cart() {
                 })
             }
             <Row className="endControls">
-                <h3>Total: $ {formatPrice(totalPrice)}</h3>
-                <Link to={`/checkout`}>
-                    <Button variant="primary" size="sm" alt="Finalizar Compra" className="emptyButton"><i className="far fa-check"></i> Finalizar Compra</Button>
-                </Link>
-                <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton"><i className="far fa-trash"></i> Vaciar</Button>
+                <Col>
+                    <h3>Total: $ {formatPrice(totalPrice)}</h3>
+                    <Link to={`/checkout`}>
+                        <Button variant="primary" size="sm" alt="Finalizar Compra" className="emptyButton"><i className="far fa-check"></i> Finalizar Compra</Button>
+                    </Link>
+                    <Button variant="danger" size="sm" alt="Vaciar carrito" onClick={()=>vaciarCarrito()} className="emptyButton"><i className="far fa-trash"></i> Vaciar</Button>
+                </Col>
             </Row>
         </Container>)
     )

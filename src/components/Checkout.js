@@ -36,10 +36,10 @@ export default function PurchaseForm() {
     return (
         <Container>
             <Row>
-                <h1>Ya casi es tuyo!</h1>
+                <Col><h1>Ya casi es tuyo!</h1></Col>
             </Row>
             <Row>
-                <h2 className="checkoutDetalle">Detalle de tu compra:</h2>
+                <Col><h2 className="checkoutDetalle">Detalle de tu compra:</h2></Col>
             </Row>
             <Row className="th">
                 <Col md={9}>Productos</Col>

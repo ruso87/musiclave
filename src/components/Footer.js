@@ -7,7 +7,7 @@ export default function NavBar() {
     return (
         <Container>
             <Link to="/" className="footer-brand">
-                    <Logo logoDsk='./media/logo-musiclave-70.png' logoMbl='./media/logo-musiclave-40.png' />
+                <Logo logoDsk='./media/logo-musiclave-70.png' logoMbl='./media/logo-musiclave-40.png' />
             </Link>
             <p>©Ruso87 de Andrés Hernández. <a href="https://github.com/ruso87"><i className="fab fa-github"></i></a></p>
             <p>Musiclave es una empresa inventada por Andrés Hernández como entrega final del curso de React JS.</p>

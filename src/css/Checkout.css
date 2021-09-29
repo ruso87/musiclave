@@ -1,5 +1,14 @@
-h2.checkoutDetalle { margin-bottom: 10px !important; font-size: 1.45em;}
+.checkoutDetalle h1 { margin-bottom: 10px !important;}
+.checkoutDetalle h2 { margin-bottom: 10px !important; font-size: 1.45em; line-height: 3rem;}
+.checkoutDetalle h2 span { font-weight: 100; background: #dadada; padding: 6px 20px;}
+.checkoutDetalle h3 { text-align: left; padding-top: 0; margin-bottom: 20px;}
 .checkOutTotal { justify-content: center; margin-bottom: 15px;}
 .sendButton { padding: 10px !important; font-size: 17px !important; width: 100%;}
 .sendButton i { margin-right: 5px;}
 form { margin-bottom: 50px;}
+
+@media (max-width: 768px) {
+    .checkoutDetalle h2, .checkoutDetalle h3 { text-align: center;}
+    .checkoutDetalle h2 { font-size: 1.2em;}
+
+}

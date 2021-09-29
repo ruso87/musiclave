@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import '../css/Checkout.css';
 import '../css/Loading.css';
 
@@ -14,15 +15,15 @@ export default function CheckoutOk() {
     }
 
     return (
-        <Container>
+        <Container className="checkoutDetalle">
             <Row>
-                <h1>Felicitaciones!</h1>
+                <Col><h1>Felicitaciones!</h1></Col>
             </Row>
             <Row>
-                <h3 className="checkoutDetalle">Tu compra se realizó con exito!</h3>
+                <Col><h3>Tu compra se realizó con exito!</h3></Col>
             </Row>
             <Row>
-                <h2 className="checkoutDetalle">Tu número de seguimiento es: {purchaseId}</h2>
+                <Col><h2>Tu código de seguimiento es: <span>{purchaseId}</span></h2></Col>
             </Row>
         </Container>
     )

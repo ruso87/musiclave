@@ -4,7 +4,7 @@ import '../css/Loading.css';
 import Container from 'react-bootstrap/Container';
 import ItemDetail from './ItemDetail';
 import NoMatch from './NoMatch';
-import { collection, getDocs } from 'firebase/firestore';
+import { doc, getDoc } from "firebase/firestore";
 import { getData } from '../firebase';
 
 export default function ItemDetailContainer() {
@@ -17,22 +17,15 @@ export default function ItemDetailContainer() {
 
     useEffect(() => {
         setLoading(true);
-        // función que busca todos los productos
         const getProduct = async () => {
-            const prodCollection = collection(getData(), 'productos');
-            const prodSnapshot = await getDocs(prodCollection);
-            const prodList = prodSnapshot.docs.map(doc => ({
-                id: doc.id, ...doc.data()
-            }));
-            // filtro el listado y busco el que quiero mostrar
-            const thisProd = prodList.filter((item)=>item.id === id)
+            const docRef = doc(getData(), "productos", `${id}`);
+            const docSnap = await getDoc(docRef);
+            docSnap.exists() ? setProduct(docSnap.data()) : setNotFound(true);
             setLoading(false);
-            setProduct(thisProd);
-            if (thisProd.length === 0) {
-                setNotFound(true);
-            }
         };
+
         getProduct();
+
     }, [id]);
 
     if (loading) {
@@ -44,12 +37,7 @@ export default function ItemDetailContainer() {
     
     return (
         <Container>
-            { product.map((item) => {
-                return (
-                    <ItemDetail id={item.id} name={item.name} img={item.img} price={item.price} description={item.description} stock={item.stock} initial={item.initial} key={item.id}/>
-                    )
-                })
-            }
+            <ItemDetail id={id} name={product.name} img={product.img} price={product.price} description={product.description} stock={product.stock} initial={product.initial} key={product.id}/>
         </Container>
     )
 }

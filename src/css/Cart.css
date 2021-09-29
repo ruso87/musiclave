@@ -7,6 +7,15 @@ h3 { text-align: right; padding-top: 31px;}
 .centered { text-align: center;}
 .imgProducto { background-color: #fff; text-align: center; padding: 10px;}
 .imgProducto img { max-width: 100%; max-height: 60px;}
-.endControls { justify-content: flex-end;}
+.endControls { justify-content: flex-end; padding: 0 15px;}
 .emptyButton { margin-top: 26px; margin-left: 20px; padding: 10px 30px !important; font-size: 15px !important;}
 .emptyButton i { margin-right: 5px;}
+
+
+@media (max-width: 768px) {
+    .th, .td { text-align: center;}
+    .td .action { justify-content: center; margin-top: 10px;}
+    .td .action a { margin-right: 5px;}
+    .endControls { text-align: center;}
+    .endControls h3 { text-align: center;}
+}
