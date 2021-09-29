@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import '../css/Loading.css';
-import '../css/ItemListContainer.css'
+import Loading from './Loading';
 import ItemList from './ItemList';
 import NoMatch from './NoMatch';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { getData } from '../firebase';
+import '../css/ItemListContainer.css'
 
 export default function ItemListContainer(){
 
@@ -61,7 +61,7 @@ export default function ItemListContainer(){
 
     
     if (loading) {
-      return <div className="lds-ripple"><div></div><div></div></div>;
+      return <Loading />;
     }
     if (notFound) {
       return <NoMatch />;

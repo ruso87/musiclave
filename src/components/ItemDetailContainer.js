@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
-import '../css/Loading.css';
+import Loading from './Loading';
 import Container from 'react-bootstrap/Container';
 import ItemDetail from './ItemDetail';
 import NoMatch from './NoMatch';
@@ -29,7 +29,7 @@ export default function ItemDetailContainer() {
     }, [id]);
 
     if (loading) {
-        return <div className="lds-ripple"><div></div><div></div></div>;
+        return <Loading />;
     }
     if (notFound) {
         return <NoMatch />;

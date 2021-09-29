@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
+import Loading from './Loading';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../css/Checkout.css';
-import '../css/Loading.css';
 
 export default function CheckoutOk() {
 
     const { purchaseId, loading } = useContext(CartContext);
 
     if (loading) {
-      return <div className="lds-ripple"><div></div><div></div></div>;
+      return <Loading />;
     }
 
     return (

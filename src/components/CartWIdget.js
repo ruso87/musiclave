@@ -9,11 +9,7 @@ export default function CartIco( props ) {
     return (
         <Link to="/Cart" className="cartIco" role="button">
             <i className="fas fa-shopping-cart"></i>
-            {itemsInCart === 0 ? (
-                ""
-            ) : (
-                <span>{itemsInCart}</span>
-            )}
+            {itemsInCart !== 0 && <span>{itemsInCart}</span>}
         </Link>
     )
 }
